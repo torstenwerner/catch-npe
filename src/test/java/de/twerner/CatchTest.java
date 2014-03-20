@@ -1,13 +1,12 @@
 package de.twerner;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
@@ -19,7 +18,7 @@ public class CatchTest {
 
     @Test
     public void testNotNull() throws Exception {
-        assertThat(helper.helper("abc"), notNullValue());
+        assertThat(helper.helper("abc"), is("abc"));
     }
 
     @Test

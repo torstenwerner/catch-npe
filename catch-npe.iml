@@ -26,14 +26,9 @@
     <orderEntry type="library" exported="" name="Gradle: aopalliance-1.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-core-4.0.2.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-beans-4.0.2.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: aspectjrt-1.7.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: spring-test-4.0.2.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-context-4.0.2.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-expression-4.0.2.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: spring-aspects-4.0.2.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: aspectjweaver-1.7.4" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: spring-instrument-4.0.2.RELEASE" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: spring-instrument-4.0.2.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: logback-classic-1.0.13" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: logback-classic-1.0.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: logback-core-1.0.13" level="project" />
@@ -41,6 +36,8 @@
     <orderEntry type="library" exported="" name="Gradle: slf4j-api-1.7.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: jcl-over-slf4j-1.7.6" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: jcl-over-slf4j-1.7.6" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-aspects-4.0.2.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: aspectjweaver-1.7.4" level="project" />
   </component>
 </module>
 
