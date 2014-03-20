@@ -1,13 +1,9 @@
 package de.twerner;
 
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.stereotype.Component;
-
-@Component
-@Configurable
-public class Helper {
+/**
+ * Created by torstenwerner on 20.03.14.
+ */
+public interface Helper {
     @CatchNullPointerException
-    public String helper(Object arg) {
-        return arg.toString();
-    }
+    String helper(Object arg);
 }
