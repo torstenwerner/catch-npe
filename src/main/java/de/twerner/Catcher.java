@@ -14,14 +14,14 @@ import org.springframework.stereotype.Component;
 public class Catcher {
     private static Logger logger = LoggerFactory.getLogger(Catcher.class);
 
-    @Around("execution(* helper(..))")
+    @Around("execution(* *(..)) && @annotation(CatchNullPointerException)")
     public Object catchNullPointerException(ProceedingJoinPoint pjp) throws Throwable {
-        logger.debug("before");
+        logger.debug("before {}", pjp.getSignature().toShortString());
         try {
             return pjp.proceed();
         }
         catch (NullPointerException e) {
-            logger.debug("got NullPointerException");
+            logger.debug("swallowed NullPointerException");
             return null;
         }
     }

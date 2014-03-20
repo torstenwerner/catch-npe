@@ -9,16 +9,10 @@ import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
 
 @Configuration
 @ComponentScan("de.twerner")
-@EnableSpringConfigured
 @EnableAspectJAutoProxy
 public class ApplicationConfig {
     @Bean
     public Helper helper() {
         return new HelperImpl();
-    }
-
-    @Bean
-    public AnnotationAwareAspectJAutoProxyCreator annotationAwareAspectJAutoProxyCreator() {
-        return new AnnotationAwareAspectJAutoProxyCreator();
     }
 }
