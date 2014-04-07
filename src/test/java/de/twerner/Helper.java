@@ -13,9 +13,6 @@ public class Helper {
         return arg.toString();
     }
 
-    @WrappedBySomeService
-    public void callback() { System.setProperty("callbackCalled", "true"); }
-
     public static void main(String args[]) {
         final ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         final Helper helper = context.getBean(Helper.class);

@@ -12,13 +12,13 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.util.MatcherAssertionErrors.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ApplicationConfig.class)
+@ContextConfiguration(locations = "classpath:/spring-config.xml")
 public class SomeServiceTest {
     @Autowired
     private SomeService someService;
 
     @Autowired
-    private Helper helper;
+    private WrapperTestHelper wrapperTestHelper;
 
     @Before
     public void setup() {
@@ -40,7 +40,7 @@ public class SomeServiceTest {
 
     @Test
     public void testIndirectCall() throws Exception {
-        helper.callback();
+        wrapperTestHelper.callback();
         assertThat(System.getProperty("callbackCalled"), is("true"));
         assertThat(System.getProperty("someServiceCalled"), is("true"));
     }
