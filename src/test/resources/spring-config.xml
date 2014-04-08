@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-
-    <aop:aspectj-autoproxy/>
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="someService" class="de.twerner.SomeService"/>
-    <bean id="wrapper" class="de.twerner.Wrapper">
+    <bean id="wrappingAdvice" class="de.twerner.WrappingInterceptor">
         <property name="someService" ref="someService"/>
     </bean>
+    <bean id="wrappingPointcut" class="org.springframework.aop.support.annotation.AnnotationMatchingPointcut"
+            factory-method="forMethodAnnotation">
+        <constructor-arg value="de.twerner.WrappedBySomeService"/>
+    </bean>
+    <bean id="wrappingAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="wrappingPointcut"/>
+        <property name="advice" ref="wrappingAdvice"/>
+        <property name="order" value="1"/>
+    </bean>
+
     <bean id="wrapperTestHelper" class="de.twerner.WrapperTestHelper"/>
+
+    <bean id="proxyTestHelper" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="wrapperTestHelper"/>
+        <property name="proxyTargetClass" value="true"/>
+        <property name="interceptorNames">
+            <list>
+                <value>wrappingAdvisor</value>
+            </list>
+        </property>
+    </bean>
 </beans>

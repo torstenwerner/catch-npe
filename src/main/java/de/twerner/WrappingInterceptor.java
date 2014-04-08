@@ -1,13 +1,11 @@
 package de.twerner;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Aspect
-public class Wrapper {
+public class WrappingInterceptor implements MethodInterceptor {
     private static Logger logger = LoggerFactory.getLogger(Catcher.class);
 
     public void setSomeService(SomeService someService) {
@@ -16,22 +14,23 @@ public class Wrapper {
 
     private SomeService someService;
 
-    @Around("execution(* *(..)) && @annotation(WrappedBySomeService)")
-    public void wrapBySomeService(final ProceedingJoinPoint pjp) {
+    @Override
+    public Object invoke(final MethodInvocation invocation) throws Throwable {
         someService.doSomething(new SomeServiceCallback() {
             @Override
             public void execute() {
                 try {
-                    pjp.proceed();
+                    invocation.proceed();
                 } catch (Throwable throwable) {
                     if (throwable instanceof RuntimeException) {
                         throw (RuntimeException) throwable;
-                    } else {
+                    }
+                    else {
                         throw new RuntimeException(throwable);
                     }
                 }
             }
         });
+        return null;
     }
-
 }
