@@ -17,7 +17,6 @@ public class SomeServiceTest {
     @Autowired
     private SomeService someService;
 
-    @Qualifier("proxyTestHelper")
     @Autowired
     private WrapperTestHelper wrapperTestHelper;
 

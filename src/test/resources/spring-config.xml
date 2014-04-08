@@ -19,9 +19,8 @@
 
     <bean id="wrapperTestHelper" class="de.twerner.WrapperTestHelper"/>
 
-    <bean id="proxyTestHelper" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="target" ref="wrapperTestHelper"/>
-        <property name="proxyTargetClass" value="true"/>
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames" value="wrapperTestHelper"/>
         <property name="interceptorNames">
             <list>
                 <value>wrappingAdvisor</value>
